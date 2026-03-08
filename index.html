@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>心伴 · AI 陪伴与品质生活</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">心伴</a>
+      <nav class="nav">
+        <a href="#home">首页</a>
+        <a href="#companion">AI 陪伴</a>
+        <a href="#figures">手办周边</a>
+        <a href="#niche">小众好物</a>
+        <a href="#adult" class="nav-adult">成人专区</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="btn-ghost" id="openChat" aria-label="打开 AI 陪伴">与 TA 聊聊</button>
+        <button type="button" class="btn-cart" id="openCart" aria-label="购物车">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-tag">有人懂你的情绪，有物陪伴你的日常</p>
+        <h1 class="hero-title">AI 陪伴 · 治愈系好物</h1>
+        <p class="hero-desc">和专属 AI 聊聊天，发现手办、小众好物与私密好物，让每一天都多一点温柔。</p>
+        <div class="hero-cta">
+          <a href="#companion" class="btn-primary">开启 AI 陪伴</a>
+          <a href="#figures" class="btn-secondary">逛逛好物</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="companion" class="section companion-section">
+      <div class="container">
+        <h2 class="section-title">你的专属 AI 陪伴</h2>
+        <p class="section-desc">随时倾诉、推荐好物，像朋友一样懂你。</p>
+        <div class="companion-preview">
+          <div class="chat-demo">
+            <div class="chat-msg ai">
+              <span class="avatar">✨</span>
+              <p>嗨，今天心情怎么样？需要我陪你聊聊，还是想看看有什么好物可以种草？</p>
+            </div>
+            <div class="chat-msg user">
+              <p>想买点放松的小东西</p>
+              <span class="avatar">你</span>
+            </div>
+            <div class="chat-msg ai">
+              <span class="avatar">✨</span>
+              <p>可以呀～我们这边有手办、香薰、小众设计，还有成人专区的情趣好物，都是偏品质、不尴尬的那种。你更想先看哪一类？</p>
+            </div>
+          </div>
+          <button type="button" class="btn-primary" id="startCompanion">和 TA 聊聊 · 获取推荐</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="figures" class="section products-section">
+      <div class="container">
+        <h2 class="section-title">手办 · 周边</h2>
+        <p class="section-desc">收藏与陪伴，让喜欢的角色留在身边。</p>
+        <div class="product-grid" id="figuresGrid">
+          <!-- 由 JS 填充 -->
+        </div>
+      </div>
+    </section>
+
+    <section id="niche" class="section products-section">
+      <div class="container">
+        <h2 class="section-title">小众好物</h2>
+        <p class="section-desc">香薰、文创、设计小物，治愈日常。</p>
+        <div class="product-grid" id="nicheGrid">
+          <!-- 由 JS 填充 -->
+        </div>
+      </div>
+    </section>
+
+    <section id="adult" class="section products-section adult-section">
+      <div class="container">
+        <div id="adultGate" class="adult-gate">
+          <div class="adult-gate-content">
+            <h2>成人专区</h2>
+            <p>本专区仅供年满 18 周岁用户浏览与购买，请确认您的年龄。</p>
+            <div class="age-verify">
+              <label>
+                <input type="checkbox" id="ageConfirm" />
+                我确认已满 18 周岁
+              </label>
+              <button type="button" class="btn-primary" id="enterAdult" disabled>进入专区</button>
+            </div>
+          </div>
+        </div>
+        <div id="adultContent" class="adult-content hidden">
+          <h2 class="section-title">成人用品</h2>
+          <p class="section-desc">品质情趣用品，私密配送，安心选购。</p>
+          <div class="product-grid" id="adultGrid">
+            <!-- 由 JS 填充 -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- AI 对话浮窗 -->
+  <div id="chatPanel" class="chat-panel hidden">
+    <div class="chat-panel-header">
+      <div class="chat-header-left">
+        <span class="chat-title">✨ 心伴 AI</span>
+        <div class="chat-stats">
+          <span class="intimacy-badge" id="intimacyBadge">亲密度 Lv.1</span>
+          <span class="streak-badge" id="streakBadge">连续 0 天</span>
+        </div>
+      </div>
+      <button type="button" class="btn-close" id="closeChat" aria-label="关闭">×</button>
+    </div>
+    <div class="chat-toolbar">
+      <button type="button" class="btn-checkin" id="dailyCheckin">
+        <span class="checkin-icon">🌸</span>
+        <span id="checkinText">今日签到</span>
+      </button>
+      <span class="daily-limit" id="dailyLimit">今日还可聊 <strong id="messagesLeft">5</strong> 句</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg ai welcome-msg">
+        <span class="avatar">✨</span>
+        <p id="welcomeMessage">你好呀～我是心伴。想聊聊天、解解压，或者让我帮你挑好物都可以～<br><small>怎么称呼你？在下面输入昵称我会记住哦。</small></p>
+      </div>
+    </div>
+    <div class="chat-input-wrap">
+      <input type="text" id="chatInput" placeholder="输入想说的或想买的..." maxlength="200" />
+      <button type="button" class="btn-send" id="sendChat">发送</button>
+    </div>
+    <div class="chat-footer-hint" id="chatFooterHint"></div>
+  </div>
+
+  <!-- 购物车侧栏 -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>购物车</h3>
+      <button type="button" class="btn-close" id="closeCart" aria-label="关闭">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty" id="cartEmpty">购物车是空的，去逛逛吧～</p>
+    </div>
+    <div class="cart-footer">
+      <p class="cart-total">合计：<strong id="cartTotal">¥0</strong></p>
+      <button type="button" class="btn-primary btn-checkout" id="checkout">去结算</button>
+    </div>
+  </div>
+  <div id="cartOverlay" class="cart-overlay hidden"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>心伴 · AI 陪伴与品质生活 · 仅供成年人使用</p>
+      <p class="footer-links"><a href="#">用户协议</a> · <a href="#">隐私政策</a> · <a href="#">关于我们</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
